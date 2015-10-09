@@ -49,16 +49,25 @@ App.SearchRoute = Ember.Route.extend({
     },
     addToLibrary: function(movie) {
       console.log('addToLibrary', movie);
-      this.controllerFor('library').addObject(movie);
+      this.controllerFor('library').get('movies').addObject(movie);
     }
   }
 });
 
-App.SearchController = Ember.Controller.extend({
+
+App.SearchItemController = Ember.ObjectController.extend({
+  isInLibrary: false,
+});
+
+App.SearchController = Ember.ArrayController.extend({
   url: "http://www.omdbapi.com/?s=",
   title: '',
   results: Ember.A(),
 });
 
-App.LibraryController = Ember.ArrayController.extend({
+App.LibraryController = Ember.Controller.extend({
+  movies: Ember.A(),
 });
+
+
+

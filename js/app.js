@@ -30,13 +30,25 @@ App.Movie = DS.Model.extend({
 });
 
 
+App.SearchItemController = Ember.Controller.extend({
+  attributes: function() {
+    var attributes = Ember.A();
+    var model = this.get('model');
+    Object.keys(model).forEach(function(key) {
+      attributes.addObject({key: key, val: content[key]});
+    });
+    return attributes;
+  }.property('model')
+});
+
 App.SearchController = Ember.ArrayController.extend({
-  url: "http://www.omdbapi.com/?t=",
+  itemController: 'searchItem',
+  url: "http://www.omdbapi.com/?s=",
   title: '',
 
-  add: function(json) {
+  add: function(results) {
     // var movie = this.store.createRecord('movie', json);
-    this.get('content').addObject(json);
+    this.get('model').addObjects(results);
   },
 
   actions: {
@@ -47,8 +59,8 @@ App.SearchController = Ember.ArrayController.extend({
       self = this;
 
       Ember.$.getJSON( url, function( json ) {
-        console.log('json:', json);
-        self.add(json);
+        console.log('getJSON returned:', json);
+        self.add(json['Search']);
       });
       return false;
     }

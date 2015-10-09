@@ -33,6 +33,9 @@
       {{#each model as |result|}}
         <div class='result-box'>
           <p>{{result.Title}}</p>
+          {{#each result.attributes as |attr|}}
+            {{attr.key}}:{{attr.val}}
+          {{/each}}
         </div>
       {{/each}}
     </div>

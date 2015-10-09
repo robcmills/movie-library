@@ -9,6 +9,7 @@
 <body>
   <script type="text/x-handlebars">
     <h2>Welcome to Movie Library</h2>
+    <hr>
     {{outlet}}
   </script>
 
@@ -26,11 +27,21 @@
       {{input value=title type='text'}}   
     </div>
     <button {{action 'submit'}} class='btn'>Search</button>
+    <hr>
+    <div class='results'>
+      <h3>Results</h3>
+      {{#each model as |result|}}
+        <div class='result-box'>
+          <p>{{result.Title}}</p>
+        </div>
+      {{/each}}
+    </div>
   </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>
-  <script src="js/libs/ember-template-compiler-2.0.1.js"></script>
-  <script src="js/libs/ember-2.0.1.debug.js"></script>
+  <script src="js/libs/ember-template-compiler-1.12.1.js"></script>
+  <script src="js/libs/ember-1.12.1.js"></script>
+  <script src="js/libs/ember-data.js"></script>
   <script src="js/app.js"></script>
   <!-- to activate the test runner, add the "?test" query string parameter -->
   <script src="tests/runner.js"></script>

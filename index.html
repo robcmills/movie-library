@@ -17,14 +17,14 @@
     {{outlet}}
   </script>
 
-  <script type="text/x-handlebars" id="components/search-result">
-    <div class='result-box'>
-      Title: {{result.Title}}<br>
-      Year: {{result.Year}}<br>
-      ImdbID: {{result.imdbID}}<br>
-      Type: {{result.Type}}<br>
-      Poster: {{result.Poster}}<br>
+  <script type="text/x-handlebars" id="components/movie-preview">
+    <div class='preview-box'>
       <br>
+      Title: {{movie.Title}}<br>
+      Year: {{movie.Year}}<br>
+      ImdbID: {{movie.imdbID}}<br>
+      Type: {{movie.Type}}<br>
+      Poster: {{movie.Poster}}<br>
     </div>
   </script>
 
@@ -39,13 +39,34 @@
     <div class='results'>
       <h3>Results</h3>
       {{#each results as |result|}}
-        {{search-result result=result}}
+        {{movie-preview movie=result}}
+        <button {{action 'addToLibrary' result}} 
+          class='btn'>Add to Library</button>
       {{/each}}
+    </div>
+  </script>
+
+  <script type="text/x-handlebars" id="components/movie-card">
+    <div class='card-box'>
+      <br>
+      Title: {{movie.Title}}<br>
+      Year: {{movie.Year}}<br>
+      ImdbID: {{movie.imdbID}}<br>
+      Type: {{movie.Type}}<br>
+      Poster: {{movie.Poster}}<br>
     </div>
   </script>
 
   <script type="text/x-handlebars" id="library">
     <h3>Library</h3>
+    <hr>
+    <div class='library'>
+      {{#each content as |movie|}}
+        {{movie-card movie=movie}}
+      {{else}}
+        No movies added yet.
+      {{/each}}
+    </div>
   </script>
 
 

@@ -46,6 +46,10 @@ App.SearchRoute = Ember.Route.extend({
       Ember.$.getJSON( url, function( json ) {
         self.addResults(json['Search']);
       });
+    },
+    addToLibrary: function(movie) {
+      console.log('addToLibrary', movie);
+      this.controllerFor('library').addObject(movie);
     }
   }
 });
@@ -54,4 +58,7 @@ App.SearchController = Ember.Controller.extend({
   url: "http://www.omdbapi.com/?s=",
   title: '',
   results: Ember.A(),
+});
+
+App.LibraryController = Ember.ArrayController.extend({
 });

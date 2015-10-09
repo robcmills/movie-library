@@ -33,7 +33,7 @@ App.Movie = DS.Model.extend({
 App.SearchRoute = Ember.Route.extend({
   addResults: function(results) {
     // var movie = this.store.createRecord('movie', json);
-    this.controllerFor('search').get('results').addObjects(results);
+    this.controllerFor('search').get('content').addObjects(results);
   },
 
   actions: {
@@ -49,24 +49,29 @@ App.SearchRoute = Ember.Route.extend({
     },
     addToLibrary: function(movie) {
       console.log('addToLibrary', movie);
-      this.controllerFor('library').get('movies').addObject(movie);
+      this.controllerFor('library').get('content').addObject(movie);
     }
   }
 });
 
 
 App.SearchItemController = Ember.ObjectController.extend({
-  isInLibrary: false,
+  needs: ['library'],
+
+  isInLibrary: function() {
+    var library = this.get('controllers.library');
+    return library.contains(this.get('content'));
+  }.property('content', 'controllers.library.[]')
 });
 
 App.SearchController = Ember.ArrayController.extend({
+  itemController: 'searchItem',
   url: "http://www.omdbapi.com/?s=",
   title: '',
-  results: Ember.A(),
+  // results: Ember.A(),
 });
 
-App.LibraryController = Ember.Controller.extend({
-  movies: Ember.A(),
+App.LibraryController = Ember.ArrayController.extend({
 });
 
 

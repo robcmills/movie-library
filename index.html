@@ -38,10 +38,14 @@
     <hr>
     <div class='results'>
       <h3>Results</h3>
-      {{#each movie in results}}
+      {{#each movie in controller}}
         {{movie-preview movie=movie}}
-        <button {{action 'addToLibrary' movie}} 
-          class='btn'>Add to Library</button>
+        {{#if movie.isInLibrary}}
+          Added to Library
+        {{else}}
+          <button {{action 'addToLibrary' movie}} 
+            class='btn'>Add to Library</button>
+        {{/if}}
       {{/each}}
     </div>
   </script>
@@ -61,7 +65,7 @@
     <h3>Library</h3>
     <hr>
     <div class='library'>
-      {{#each movie in movies}}
+      {{#each movie in controller}}
         {{movie-card movie=movie}}
       {{else}}
         No movies added yet.

@@ -83,7 +83,7 @@ App.SearchItemController = Ember.ObjectController.extend({
 
   isInLibrary: function() {
     var library = this.get('controllers.library');
-    return !!library.findBy(this.get('imdbID'));
+    return !!library.findBy('imdbID', this.get('imdbID'));
   }.property('imdbID', 'controllers.library.[]')
 });
 

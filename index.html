@@ -9,15 +9,12 @@
 <body>
   <script type="text/x-handlebars">
     <h2>Welcome to Movie Library</h2>
-    <hr>
-    {{outlet}}
-  </script>
-
-  <script type="text/x-handlebars" id="index">
     <ul>
       <li>{{link-to "Search" "search" class=""}}</li>
       <li>{{link-to "Library" "library" class=""}}</li>
     </ul>
+    <hr>
+    {{outlet}}
   </script>
 
   <script type="text/x-handlebars" id="components/search-result">
@@ -46,6 +43,11 @@
       {{/each}}
     </div>
   </script>
+
+  <script type="text/x-handlebars" id="library">
+    <h3>Library</h3>
+  </script>
+
 
   <script src="js/libs/jquery-1.10.2.js"></script>
   <script src="js/libs/ember-template-compiler-1.12.1.js"></script>

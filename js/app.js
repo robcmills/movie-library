@@ -30,17 +30,6 @@ App.Movie = DS.Model.extend({
 });
 
 
-// App.SearchItemController = Ember.Controller.extend({
-//   attributes: function() {
-//     var attributes = Ember.A();
-//     var model = this.get('model');
-//     Object.keys(model).forEach(function(key) {
-//       attributes.addObject({key: key, val: model[key]});
-//     });
-//     return attributes;
-//   }.property('model')
-// });
-
 App.SearchController = Ember.Controller.extend({
   itemController: 'searchItem',
   url: "http://www.omdbapi.com/?s=",

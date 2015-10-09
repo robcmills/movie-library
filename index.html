@@ -34,17 +34,17 @@
       <label>Title</label>
       {{input value=title type='text'}}   
     </div>
-    <button {{action 'submit'}} class='btn'>Search</button>
+    <button {{action 'submit'}} class='btn btn-primary'>Search</button>
     <hr>
     <div class='results'>
       <h3>Results</h3>
       {{#each movie in controller}}
         {{movie-preview movie=movie}}
         {{#if movie.isInLibrary}}
-          Added to Library
+          <span class="label label-success">Added to Library</span>
         {{else}}
           <button {{action 'addToLibrary' movie}} 
-            class='btn'>Add to Library</button>
+            class='btn btn-secondary'>Add to Library</button>
         {{/if}}
       {{/each}}
     </div>

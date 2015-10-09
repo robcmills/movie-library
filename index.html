@@ -20,6 +20,17 @@
     </ul>
   </script>
 
+  <script type="text/x-handlebars" id="components/search-result">
+    <div class='result-box'>
+      Title: {{result.Title}}<br>
+      Year: {{result.Year}}<br>
+      ImdbID: {{result.imdbID}}<br>
+      Type: {{result.Type}}<br>
+      Poster: {{result.Poster}}<br>
+      <br>
+    </div>
+  </script>
+
   <script type="text/x-handlebars" id="search">
     <h3>Search</h3>
     <div class='title-input-box'>
@@ -30,13 +41,8 @@
     <hr>
     <div class='results'>
       <h3>Results</h3>
-      {{#each model as |result|}}
-        <div class='result-box'>
-          <p>{{result.Title}}</p>
-          {{#each result.attributes as |attr|}}
-            {{attr.key}}:{{attr.val}}
-          {{/each}}
-        </div>
+      {{#each results as |result|}}
+        {{search-result result=result}}
       {{/each}}
     </div>
   </script>

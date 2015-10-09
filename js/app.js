@@ -42,7 +42,18 @@ App.Movie = DS.Model.extend({
   // response: DS.attr('string')
 });
 
+
 // ROUTES
+
+App.ApplicationRoute = Ember.Route.extend({
+  // load movies in library early for search results isInLibrary 
+  afterModel: function() {
+    var self = this;
+    return this.store.findAll('movie').then(function(movies) {
+      self.controllerFor('library').set('content', movies);
+    });
+  }
+});
 
 App.SearchRoute = Ember.Route.extend({
   addResults: function(results) {
@@ -69,12 +80,6 @@ App.SearchRoute = Ember.Route.extend({
   }
 });
 
-App.LibraryRoute = Ember.Route.extend({
-  model: function() {
-    return this.store.findAll('movie');
-  }
-});
-
 
 // CONTROLLERS
 
@@ -92,6 +97,7 @@ App.SearchController = Ember.ArrayController.extend({
   url: "http://www.omdbapi.com/?s=",
   title: '',
 });
+
 
 App.LibraryController = Ember.ArrayController.extend({
 });

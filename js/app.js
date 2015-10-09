@@ -56,8 +56,8 @@ App.ApplicationRoute = Ember.Route.extend({
 });
 
 App.SearchRoute = Ember.Route.extend({
-  addResults: function(results) {
-    this.controllerFor('search').get('content').addObjects(results);
+  showResults: function(results) {
+    this.controllerFor('search').set('content', results);
   },
 
   actions: {
@@ -68,7 +68,7 @@ App.SearchRoute = Ember.Route.extend({
       self = this;
 
       Ember.$.getJSON( url, function( json ) {
-        self.addResults(json['Search']);
+        self.showResults(json['Search']);
       });
     },
     addToLibrary: function(movie) {

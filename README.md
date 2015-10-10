@@ -6,6 +6,8 @@ A simple movie library management tool using the OMDb API
 
     # build bootstrap
     sass scss/bootstrap-4.0.0-alpha/bootstrap.scss css/bootstrap.css
+    # or with flexbox
+    sass scss/bootstrap-4.0.0-alpha/bootstrap-flex.scss css/bootstrap-flex.css
 
     # watch styles
     sass --watch scss/style.scss:css/style.css

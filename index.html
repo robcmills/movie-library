@@ -3,18 +3,29 @@
 <head>
   <meta charset="utf-8">
   <title>My Movie Library</title>
-  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/bootstrap-flex.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <script type="text/x-handlebars">
-    <h2>Welcome to Movie Library</h2>
-    <ul>
-      <li>{{link-to "Search" "search" class=""}}</li>
-      <li>{{link-to "Library" "library" class=""}}</li>
-    </ul>
-    <hr>
-    {{outlet}}
+    <div class='header'>
+      <h2>Welcome to Movie Library</h2>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="nav-col col-xs-2">
+          <ul class='nav'>
+            <li>{{link-to "Search" "search"}}</li>
+            <li>{{link-to "Library" "library"}}</li>
+          </ul>
+        </div>
+        <div class="col-xl-10">
+          {{outlet}}
+        </div>
+      </div>
+    </div>
+
   </script>
 
   <script type="text/x-handlebars" id="components/movie-preview">

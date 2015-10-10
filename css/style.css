@@ -1,4 +1,13 @@
-.ember-application {
-  margin: 20px; }
+.header {
+  background-color: #F2F2F2;
+  padding: 1em; }
+
+.nav-col {
+  background-color: #4d4d4d; }
+  .nav-col .nav li {
+    padding: 1rem;
+    text-align: center; }
+  .nav-col .nav a {
+    color: white; }
 
 /*# sourceMappingURL=style.css.map */

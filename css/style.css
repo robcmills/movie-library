@@ -1,3 +1,9 @@
+html, body {
+  height: 100%; }
+
+.ember-view, .container-fluid, .row {
+  height: inherit; }
+
 .header {
   background-color: #F2F2F2;
   padding: 1em; }
@@ -6,12 +12,14 @@
   background-color: #4d4d4d;
   padding: 0; }
   .nav-col .nav li {
+    color: white;
     padding: 1rem;
     text-align: center; }
     .nav-col .nav li:hover {
+      background-color: #666666;
+      cursor: pointer; }
+    .nav-col .nav li.active {
       background-color: #d15400; }
-  .nav-col .nav a {
-    color: white; }
 
 .main-col {
   padding: 1rem; }

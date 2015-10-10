@@ -6,8 +6,18 @@
 
 .nav-col {
   background-color: #4d4d4d;
+  padding: 0;
   .nav {
-    li { padding: 1rem; text-align: center; }
+    li { 
+      padding: 1rem; 
+      text-align: center; 
+      &:hover {
+        background-color: #d15400;
+      }
+    }
     a { color: white; }
   }
+}
+.main-col {
+  padding: 1rem;
 }

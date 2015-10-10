@@ -3,11 +3,17 @@
   padding: 1em; }
 
 .nav-col {
-  background-color: #4d4d4d; }
+  background-color: #4d4d4d;
+  padding: 0; }
   .nav-col .nav li {
     padding: 1rem;
     text-align: center; }
+    .nav-col .nav li:hover {
+      background-color: #d15400; }
   .nav-col .nav a {
     color: white; }
+
+.main-col {
+  padding: 1rem; }
 
 /*# sourceMappingURL=style.css.map */

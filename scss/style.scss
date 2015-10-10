@@ -1,12 +1,4 @@
 
-html, body { 
-  height: 100%; 
-}
-.ember-view, .container-fluid, .row {
-  height: inherit;
-}
-
-
 .header {
   background-color: #F2F2F2;
   padding: 1em;
@@ -15,21 +7,23 @@ html, body {
 .nav-col {
   background-color: #4d4d4d;
   padding: 0;
-  .nav {
-    li { 
-      color: white;
-      padding: 1rem; 
-      text-align: center; 
-      &:hover {
-        background-color: #666666; 
-        cursor: pointer;
-      }
-      &.active { 
-        background-color: #d15400;
-      }
+  .nav li {
+    color: white;
+    padding: 1rem; 
+    text-align: center; 
+    &:hover {
+      background-color: #666666; 
+      cursor: pointer;
+    }
+    &.active { 
+      background-color: #d15400;
     }
   }
 }
 .main-col {
   padding: 1rem;
+
+  .empty-results { 
+    height: 100vh; 
+  }
 }

@@ -1,9 +1,3 @@
-html, body {
-  height: 100%; }
-
-.ember-view, .container-fluid, .row {
-  height: inherit; }
-
 .header {
   background-color: #F2F2F2;
   padding: 1em; }
@@ -23,5 +17,7 @@ html, body {
 
 .main-col {
   padding: 1rem; }
+  .main-col .empty-results {
+    height: 100vh; }
 
 /*# sourceMappingURL=style.css.map */

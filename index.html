@@ -14,13 +14,13 @@
     </div>
     <div class="container-fluid">
       <div class="row">
-        <div class="nav-col col-xs-2">
+        <div class="nav-col col-sm-2">
           <ul class='nav'>
             {{link-to "Search" "search" tagName='li'}}
             {{link-to "Library" "library" tagName='li'}}
           </ul>
         </div>
-        <div class="main-col col-xl-10">
+        <div class="main-col col-lg-8">
           {{outlet}}
         </div>
       </div>
@@ -56,6 +56,7 @@
         <label for="title-input">Movie title:</label>
         {{input value=title type="text" class="form-control" id="title-input" placeholder="Enter a movie title"}}
       </fieldset>
+      <button {{action 'submit'}} class='btn btn-primary'>Search</button>
     </form>
   </script>
 
@@ -83,8 +84,7 @@
 
   <script type="text/x-handlebars" id="search">
     <h3>Search</h3>
-    {{search-title title=title}}
-    <button {{action 'submit'}} class='btn btn-primary'>Search</button>
+    {{search-title title=title action="submit"}}
     <hr>
     <div class='results'>
       <h3>Results</h3>

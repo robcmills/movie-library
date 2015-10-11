@@ -19,5 +19,7 @@
   padding: 1rem; }
   .main-col .empty-results {
     height: 100vh; }
+  .main-col .card-block {
+    word-wrap: break-word; }
 
 /*# sourceMappingURL=style.css.map */

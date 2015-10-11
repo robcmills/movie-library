@@ -84,6 +84,14 @@ App.SearchRoute = Ember.Route.extend({
 
 // COMPONENTS 
 
+App.SearchTitleComponent = Ember.Component.extend({
+  actions: {
+    submit: function() {
+      this.sendAction();
+    }
+  }
+});
+
 App.MoviePreviewComponent = Ember.Component.extend({
   actions: {
     addToLibrary: function() {

@@ -91,9 +91,10 @@
       {{page-results length=length}}
       {{#each movie in controller}}
         {{movie-preview movie=movie action="addToLibrary"}}
-      {{else}}
-        <div class='empty-list'>No results.</div>
       {{/each}}
+      <div class='empty-list'>
+        {{#unless controller.length}}No results.{{/unless}}
+      </div>
     </div>
   </script>
 
@@ -125,9 +126,10 @@
     <div class='library'>
       {{#each movie in controller}}
         {{movie-card movie=movie action="delete"}}
-      {{else}}
-        <div class='empty-list'>No movies added yet.</div>
       {{/each}}
+      <div class='empty-list'>
+        {{#unless controller.length}}No movies added yet.{{/unless}}
+      </div>
     </div>
   </script>
 

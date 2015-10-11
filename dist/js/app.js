@@ -81,6 +81,13 @@ App.SearchRoute = Ember.Route.extend({
   }
 });
 
+App.LibraryRoute = Ember.Route.extend({
+  actions: {
+    delete: function(movie) {
+      movie.destroyRecord();
+    }
+  }
+});
 
 // COMPONENTS 
 
@@ -96,6 +103,15 @@ App.MoviePreviewComponent = Ember.Component.extend({
   actions: {
     addToLibrary: function() {
       this.sendAction('action', this.get('movie.model'));
+    }
+  }
+});
+
+App.MovieCardComponent = Ember.Component.extend({
+  actions: {
+    delete: function() {
+      console.log('component delete', this.get('movie'));
+      this.sendAction('action', this.get('movie'));
     }
   }
 });

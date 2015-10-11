@@ -7,11 +7,11 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
   <script type="text/x-handlebars">
     <div class='header'>
       <h2>Welcome to Movie Library</h2>
     </div>
-
     <div class="container-fluid">
       <div class="row">
         <div class="nav-col col-xs-2">
@@ -25,10 +25,12 @@
         </div>
       </div>
     </div>
-
   </script>
 
-  <script type="text/x-handlebars" id="components/movie-card">
+
+  <!-- SEARCH -->
+
+  <script type="text/x-handlebars" id="components/movie-preview">
     <div class="card movie-preview">
       <div class="card-block">
         <h4 class="card-title">{{movie.Title}}</h4>
@@ -41,7 +43,7 @@
         {{#if movie.isInLibrary}}
           <span class="label label-success">Added to Library</span>
         {{else}}
-          <button {{action 'addToLibrary' movie}} 
+          <button {{action 'addToLibrary'}} 
             class='btn btn-secondary btn-sm'>Add to Library</button>
         {{/if}}
       </div>
@@ -88,10 +90,27 @@
       <h3>Results</h3>
       {{page-results length=length}}
       {{#each movie in controller}}
-        {{movie-card movie=movie}}
+        {{movie-preview movie=movie action="addToLibrary"}}
       {{else}}
         <div class='empty-results'>No results.</div>
       {{/each}}
+    </div>
+  </script>
+
+
+  <!-- LIBRARY -->
+
+  <script type="text/x-handlebars" id="components/movie-card">
+    <div class="card movie-card">
+      <div class="card-block">
+        <h4 class="card-title">{{movie.Title}}</h4>
+        <p class="card-text">
+          Year: {{movie.Year}}<br>
+          imdbID: {{movie.imdbID}}<br>
+          Type: {{movie.Type}}<br>
+          Poster: {{movie.Poster}}<br>
+        </p>
+      </div>
     </div>
   </script>
 

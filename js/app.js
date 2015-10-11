@@ -82,6 +82,17 @@ App.SearchRoute = Ember.Route.extend({
 });
 
 
+// COMPONENTS 
+
+App.MoviePreviewComponent = Ember.Component.extend({
+  actions: {
+    addToLibrary: function() {
+      this.sendAction('action', this.get('movie.model'));
+    }
+  }
+});
+
+
 // CONTROLLERS
 
 App.SearchItemController = Ember.ObjectController.extend({

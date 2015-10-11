@@ -6,7 +6,6 @@
 
 .nav-col {
   background-color: #4d4d4d;
-  height: 100vh; 
   padding: 0;
   .nav li {
     color: white;
@@ -24,6 +23,10 @@
 
 .main-col {
   padding: 1rem;
+
+  .empty-list {
+    height: 100vh; 
+  }
 
   .card-block {
     word-wrap: break-word;

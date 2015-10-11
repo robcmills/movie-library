@@ -4,7 +4,6 @@
 
 .nav-col {
   background-color: #4d4d4d;
-  height: 100vh;
   padding: 0; }
   .nav-col .nav li {
     color: white;
@@ -18,6 +17,8 @@
 
 .main-col {
   padding: 1rem; }
+  .main-col .empty-list {
+    height: 100vh; }
   .main-col .card-block {
     word-wrap: break-word; }
     .main-col .card-block .close:hover {

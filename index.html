@@ -28,14 +28,23 @@
 
   </script>
 
-  <script type="text/x-handlebars" id="components/movie-preview">
-    <div class='preview-box'>
-      <br>
-      Title: {{movie.Title}}<br>
-      Year: {{movie.Year}}<br>
-      imdbID: {{movie.imdbID}}<br>
-      Type: {{movie.Type}}<br>
-      Poster: {{movie.Poster}}<br>
+  <script type="text/x-handlebars" id="components/movie-card">
+    <div class="card movie-preview">
+      <div class="card-block">
+        <h4 class="card-title">{{movie.Title}}</h4>
+        <p class="card-text">
+          Year: {{movie.Year}}<br>
+          imdbID: {{movie.imdbID}}<br>
+          Type: {{movie.Type}}<br>
+          Poster: {{movie.Poster}}<br>
+        </p>
+        {{#if movie.isInLibrary}}
+          <span class="label label-success">Added to Library</span>
+        {{else}}
+          <button {{action 'addToLibrary' movie}} 
+            class='btn btn-secondary btn-sm'>Add to Library</button>
+        {{/if}}
+      </div>
     </div>
   </script>
 
@@ -48,6 +57,28 @@
     </form>
   </script>
 
+  <script type="text/x-handlebars" id="components/page-results">
+    <nav>
+      <ul class="pagination">
+        <li class="disabled">
+          <a href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="">
+          <a href="#">{{length}}<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="disabled">
+          <a href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </script>
+
   <script type="text/x-handlebars" id="search">
     <h3>Search</h3>
     {{search-title title=title}}
@@ -55,28 +86,12 @@
     <hr>
     <div class='results'>
       <h3>Results</h3>
+      {{page-results length=length}}
       {{#each movie in controller}}
-        {{movie-preview movie=movie}}
-        {{#if movie.isInLibrary}}
-          <span class="label label-success">Added to Library</span>
-        {{else}}
-          <button {{action 'addToLibrary' movie}} 
-            class='btn btn-secondary'>Add to Library</button>
-        {{/if}}
+        {{movie-card movie=movie}}
       {{else}}
         <div class='empty-results'>No results.</div>
       {{/each}}
-    </div>
-  </script>
-
-  <script type="text/x-handlebars" id="components/movie-card">
-    <div class='card-box'>
-      <br>
-      Title: {{movie.Title}}<br>
-      Year: {{movie.Year}}<br>
-      ImdbID: {{movie.imdbID}}<br>
-      Type: {{movie.Type}}<br>
-      Poster: {{movie.Poster}}<br>
     </div>
   </script>
 

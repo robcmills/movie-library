@@ -1,17 +1,12 @@
 
 App = Ember.Application.create();
 
-App.Router.map(function() {
-  this.route('search', { path: '/search' });
-  this.route('library', { path: '/library' });
-});
+// MODELS
 
 App.ApplicationSerializer = DS.LSSerializer.extend();
 App.ApplicationAdapter = DS.LSAdapter.extend({
   namespace: 'movie-library'
 });
-
-// MODELS
 
 App.Movie = DS.Model.extend({
   Title: DS.attr('string'), 
@@ -45,13 +40,21 @@ App.Movie = DS.Model.extend({
 
 // ROUTES
 
+App.Router.map(function() {
+  this.route('search', { path: '/search' });
+  this.route('library', { path: '/library' });
+});
+
 App.ApplicationRoute = Ember.Route.extend({
   // load movies in library early for search results isInLibrary 
-  afterModel: function() {
+  beforeModel: function() {
     var self = this;
     return this.store.findAll('movie').then(function(movies) {
       self.controllerFor('library').set('content', movies);
     });
+  },
+  afterModel: function() {
+    this.transitionTo('search');
   }
 });
 
@@ -72,8 +75,6 @@ App.SearchRoute = Ember.Route.extend({
       });
     },
     addToLibrary: function(movie) {
-      console.log('addToLibrary', movie);
-      // this.controllerFor('library').get('content').addObject(movie);
       var movie = this.store.createRecord('movie', movie);
       movie.save();
     }

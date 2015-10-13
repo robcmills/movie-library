@@ -2,6 +2,8 @@
 
 A simple movie library management tool using the OMDb API 
 
+Built with ember.js
+
 ### Styles
 
     # build bootstrap

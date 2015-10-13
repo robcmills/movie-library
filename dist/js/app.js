@@ -1,12 +1,13 @@
 
 App = Ember.Application.create();
 
-// MODELS
-
 App.ApplicationSerializer = DS.LSSerializer.extend();
 App.ApplicationAdapter = DS.LSAdapter.extend({
   namespace: 'movie-library'
 });
+
+
+// MODELS
 
 App.Movie = DS.Model.extend({
   Title: DS.attr('string'), 
@@ -14,27 +15,6 @@ App.Movie = DS.Model.extend({
   imdbID: DS.attr('string'),
   Type: DS.attr('string'),
   Poster: DS.attr('string'),
-
-  // title: DS.attr('string'), 
-  // year: DS.attr('string'), 
-  // rated: DS.attr('string'), 
-  // released: DS.attr('string'), 
-  // runtime: DS.attr('string'), 
-  // genre: DS.attr('string'), 
-  // director: "Alfonso Cuarón",
-  // writer: DS.attr('string'), 
-  // actors: DS.attr('string'), 
-  // plot: DS.attr('string'), 
-  // language: DS.attr('string'), 
-  // country: DS.attr('string'), 
-  // awards: DS.attr('string'), 
-  // poster: DS.attr('string'), 
-  // metascore: DS.attr('string'), 
-  // imdbRating: DS.attr('string'), 
-  // imdbVotes: DS.attr('string'), 
-  // imdbID: DS.attr('string'), 
-  // type: DS.attr('string'), 
-  // response: DS.attr('string')
 });
 
 
@@ -53,10 +33,13 @@ App.ApplicationRoute = Ember.Route.extend({
       self.controllerFor('library').set('content', movies);
     });
   },
-  afterModel: function() {
+});
+
+App.IndexRoute = Ember.Route.extend({
+  beforeModel: function() {
     this.transitionTo('search');
   }
-});
+})
 
 App.SearchRoute = Ember.Route.extend({
   showResults: function(results) {

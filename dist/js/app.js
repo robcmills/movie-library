@@ -72,6 +72,7 @@ App.LibraryRoute = Ember.Route.extend({
   }
 });
 
+
 // COMPONENTS 
 
 App.SearchTitleComponent = Ember.Component.extend({
@@ -93,7 +94,6 @@ App.MoviePreviewComponent = Ember.Component.extend({
 App.MovieCardComponent = Ember.Component.extend({
   actions: {
     delete: function() {
-      console.log('component delete', this.get('movie'));
       this.sendAction('action', this.get('movie'));
     }
   }

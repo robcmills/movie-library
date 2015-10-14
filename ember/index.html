@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>My Movie Library</title>
-  <link rel="stylesheet" href="css/bootstrap-flex.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -31,22 +31,16 @@
   <!-- SEARCH -->
 
   <script type="text/x-handlebars" id="components/movie-preview">
-    <div class="card movie-preview">
-      <div class="card-block">
-        <h4 class="card-title">{{movie.Title}}</h4>
-        <p class="card-text">
-          Year: {{movie.Year}}<br>
-          imdbID: {{movie.imdbID}}<br>
-          Type: {{movie.Type}}<br>
-          Poster: {{movie.Poster}}<br>
-        </p>
-        {{#if movie.isInLibrary}}
-          <span class="label label-success">Added to Library</span>
-        {{else}}
-          <button {{action 'addToLibrary'}} 
-            class='btn btn-secondary btn-sm'>Add to Library</button>
-        {{/if}}
-      </div>
+    <img class="movie-poster" alt="poster" {{bind-attr src=movie.Poster}}>
+    <div class="movie-block">
+      <p class="movie-title">{{movie.Title}}</p>
+      <p class="movie-year">{{movie.Year}}</p>
+      {{#if movie.isInLibrary}}
+        <span class="label label-success">Added to Library</span>
+      {{else}}
+        <button {{action 'addToLibrary'}} 
+          class='btn btn-secondary btn-sm'>Add to Library</button>
+      {{/if}}
     </div>
   </script>
 
@@ -60,41 +54,15 @@
     </form>
   </script>
 
-  <script type="text/x-handlebars" id="components/page-results">
-    <nav>
-      <ul class="pagination">
-        <li class="disabled">
-          <a href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-            <span class="sr-only">Previous</span>
-          </a>
-        </li>
-        <li class="">
-          <a href="#">{{length}}<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="disabled">
-          <a href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-            <span class="sr-only">Next</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </script>
-
   <script type="text/x-handlebars" id="search">
     <h3>Search</h3>
     {{search-title title=title action="submit"}}
     <hr>
     <div class='results'>
-      <h3>Results</h3>
-      {{page-results length=length}}
+      <h3>{{length}} Results</h3>
       {{#each movie in controller}}
         {{movie-preview movie=movie action="addToLibrary"}}
       {{/each}}
-      <div class='empty-list'>
-        {{#unless controller.length}}No results.{{/unless}}
-      </div>
     </div>
   </script>
 

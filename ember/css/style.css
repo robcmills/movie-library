@@ -17,11 +17,24 @@
 
 .main-col {
   padding: 1rem; }
-  .main-col .empty-list {
-    height: 100vh; }
-  .main-col .card-block {
-    word-wrap: break-word; }
-    .main-col .card-block .close:hover {
-      color: red; }
+
+.movie-preview {
+  display: inline-block;
+  margin: 0 1rem 1rem 0;
+  text-align: center;
+  word-wrap: break-word; }
+  .movie-preview .movie-poster {
+    height: 300px; }
+  .movie-preview .movie-block {
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 0.5rem; }
+    .movie-preview .movie-block .movie-title {
+      font-weight: bold; }
+    .movie-preview .movie-block .movie-title, .movie-preview .movie-block .movie-year {
+      margin: 0; }
+  .movie-preview .close:hover {
+    color: red; }
 
 /*# sourceMappingURL=style.css.map */

@@ -23,15 +23,29 @@
 
 .main-col {
   padding: 1rem;
+}
 
-  .empty-list {
-    height: 100vh; 
+.movie-preview {
+  display: inline-block;
+  margin: 0 1rem 1rem 0;
+  text-align: center;
+  word-wrap: break-word;
+  .movie-poster {
+    height: 300px;
   }
-
-  .card-block {
-    word-wrap: break-word;
-    .close:hover {
-      color: red;
+  .movie-block {
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 0.5rem;
+    .movie-title {
+      font-weight: bold;
     }
+    .movie-title, .movie-year { 
+      margin: 0;
+    }
+  }
+  .close:hover {
+    color: red;
   }
 }

@@ -42,6 +42,15 @@ App.IndexRoute = Ember.Route.extend({
 })
 
 App.SearchRoute = Ember.Route.extend({
+  setupController: function(controller) {
+    this._super();
+    // if title is set by queryParam, trigger a submit
+    if(controller.get('title')) {
+      Ember.run.next(this, function() {
+        this.send('submit');
+      });
+    }
+  },
   showResults: function(results) {
     this.controllerFor('search').set('content', results);
   },
@@ -53,7 +62,7 @@ App.SearchRoute = Ember.Route.extend({
       url = controller.get('url') + title,
       self = this;
 
-      Ember.$.getJSON( url, function( json ) {
+      $.getJSON( url, function( json ) {
         self.showResults(json['Search']);
       });
     },
@@ -84,6 +93,7 @@ App.SearchTitleComponent = Ember.Component.extend({
 });
 
 App.MoviePreviewComponent = Ember.Component.extend({
+  classNames: ['movie-preview'],
   actions: {
     addToLibrary: function() {
       this.sendAction('action', this.get('movie.model'));
@@ -115,6 +125,7 @@ App.SearchController = Ember.ArrayController.extend({
   itemController: 'searchItem',
   url: "http://www.omdbapi.com/?s=",
   title: '',
+  queryParams: ['title']
 });
 
 

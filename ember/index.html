@@ -34,7 +34,7 @@
     <img class="movie-poster" alt="poster" {{bind-attr src=movie.Poster}}>
     <div class="movie-block">
       <p class="movie-title">{{movie.Title}}</p>
-      <p class="movie-year">{{movie.Year}}</p>
+      <p class="movie-text">{{movie.Year}}</p>
       {{#if movie.isInLibrary}}
         <span class="label label-success">Added to Library</span>
       {{else}}
@@ -55,7 +55,6 @@
   </script>
 
   <script type="text/x-handlebars" id="search">
-    <h3>Search</h3>
     {{search-title title=title action="submit"}}
     <hr>
     <div class='results'>
@@ -70,21 +69,17 @@
   <!-- LIBRARY -->
 
   <script type="text/x-handlebars" id="components/movie-card">
-    <div class="card movie-card">
-      <div class="card-block">
-        <button {{action "delete"}} type="button" class="close pull-right" 
-          aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-          <span class="sr-only">Close</span>
-        </button>
-        <h4 class="card-title">{{movie.Title}}</h4>
-        <p class="card-text">
-          Year: {{movie.Year}}<br>
-          imdbID: {{movie.imdbID}}<br>
-          Type: {{movie.Type}}<br>
-          Poster: {{movie.Poster}}<br>
-        </p>
-      </div>
+    <img class="movie-poster" alt="poster" {{bind-attr src=movie.Poster}}>
+    <div class="movie-block">
+      <p class="movie-title">{{movie.Title}}</p>
+      <p class="movie-text">
+        Year: {{movie.Year}}<br>
+        imdbID: {{movie.imdbID}}<br>
+        Type: {{movie.Type}}<br>
+      </p>
+      <button {{action "delete"}} class="movie-delete btn btn-danger btn-sm">
+        Remove from library
+      </button>
     </div>
   </script>
 

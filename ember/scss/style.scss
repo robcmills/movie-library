@@ -25,27 +25,45 @@
   padding: 1rem;
 }
 
-.movie-preview {
-  display: inline-block;
+.movie {
   margin: 0 1rem 1rem 0;
-  text-align: center;
   word-wrap: break-word;
   .movie-poster {
     height: 300px;
-  }
+  } 
   .movie-block {
-    border-left: 1px solid lightgray;
-    border-right: 1px solid lightgray;
-    border-bottom: 1px solid lightgray;
-    padding-bottom: 0.5rem;
     .movie-title {
       font-weight: bold;
-    }
-    .movie-title, .movie-year { 
       margin: 0;
     }
+    .movie-text { 
+    }
+  }
+}
+
+.movie-preview {
+  border: 1px solid lightgray;
+  display: inline-block;
+  padding: 0.5rem;
+  text-align: center;
+  .movie-text {
+    margin: 0.25rem;
   }
   .close:hover {
     color: red;
+  }
+}
+
+.movie-card {
+  .movie-poster {
+    display: inline-block;
+  }
+  .movie-block {
+    display: inline-block;
+    margin-left: 0.5rem;
+    position: relative;
+    vertical-align: top;
+    .movie-delete {
+    }
   }
 }

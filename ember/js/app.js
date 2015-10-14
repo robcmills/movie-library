@@ -93,7 +93,7 @@ App.SearchTitleComponent = Ember.Component.extend({
 });
 
 App.MoviePreviewComponent = Ember.Component.extend({
-  classNames: ['movie-preview'],
+  classNames: ['movie', 'movie-preview'],
   actions: {
     addToLibrary: function() {
       this.sendAction('action', this.get('movie.model'));
@@ -102,6 +102,7 @@ App.MoviePreviewComponent = Ember.Component.extend({
 });
 
 App.MovieCardComponent = Ember.Component.extend({
+  classNames: ['movie', 'movie-card'],
   actions: {
     delete: function() {
       this.sendAction('action', this.get('movie'));

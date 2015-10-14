@@ -18,23 +18,31 @@
 .main-col {
   padding: 1rem; }
 
-.movie-preview {
-  display: inline-block;
+.movie {
   margin: 0 1rem 1rem 0;
-  text-align: center;
   word-wrap: break-word; }
-  .movie-preview .movie-poster {
+  .movie .movie-poster {
     height: 300px; }
-  .movie-preview .movie-block {
-    border-left: 1px solid lightgray;
-    border-right: 1px solid lightgray;
-    border-bottom: 1px solid lightgray;
-    padding-bottom: 0.5rem; }
-    .movie-preview .movie-block .movie-title {
-      font-weight: bold; }
-    .movie-preview .movie-block .movie-title, .movie-preview .movie-block .movie-year {
-      margin: 0; }
+  .movie .movie-block .movie-title {
+    font-weight: bold;
+    margin: 0; }
+
+.movie-preview {
+  border: 1px solid lightgray;
+  display: inline-block;
+  padding: 0.5rem;
+  text-align: center; }
+  .movie-preview .movie-text {
+    margin: 0.25rem; }
   .movie-preview .close:hover {
     color: red; }
+
+.movie-card .movie-poster {
+  display: inline-block; }
+.movie-card .movie-block {
+  display: inline-block;
+  margin-left: 0.5rem;
+  position: relative;
+  vertical-align: top; }
 
 /*# sourceMappingURL=style.css.map */
